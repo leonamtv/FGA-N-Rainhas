@@ -91,7 +91,7 @@ class FGA :
                 while soma < roleta and i < len ( avaliacoes ) :
                     soma += avaliacoes[i]
                     i += 1
-                return i
+                return i if i < len ( avaliacoes ) else ( len( avaliacoes ) - 1 )
             
             if verbose :
                 print(f'{bcolors.FAIL}Geração {bcolors.BOLD}' 
@@ -102,6 +102,7 @@ class FGA :
             # Adiciona a elite, removendo a da lista de filhos
             elitistas = filhos[:nElite]
             del filhos[:nElite]
+            del avaliacoes[:nElite]
             newPop.extend(elitistas)
 
             # Adiciona individuos da lista de filhos utilizando a roleta
